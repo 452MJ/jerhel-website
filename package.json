@@ -27,10 +27,16 @@
   "devDependencies": {
     "postcss": "8.1.2",
     "postcss-sorting": "6.0.0",
-    "prettier": "2.1.2",
-    "stylelint": "^13.6.1",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-order": "^4.1.0",
-    "stylelint-prettier": "^1.1.2"
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-plugin-react": "^7.9.1",
+    "prettier": "2.1.2"
+
   }
 }
