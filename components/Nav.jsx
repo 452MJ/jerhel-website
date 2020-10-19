@@ -2,19 +2,19 @@
 import React from 'react'
 import { Dropdown, Menu } from 'antd'
 
-export default function Index() {
+export default function Nav() {
   return (
     <div
       className="row main-between"
       style={{
         backgroundColor: '#752EA4',
         width: '100%',
-        height: 100,
+        height: 63,
         paddingLeft: 60,
         paddingRight: 90,
       }}
     >
-      <div style={{ height: 76, width: 128, backgroundColor: 'white' }} />
+      <div style={{ width: 80, height: 48, backgroundColor: 'white' }} />
 
       <div className="row main-between">
         <Dropdown
@@ -23,9 +23,9 @@ export default function Index() {
               <Menu.Item key="0">
                 <span
                   style={{
-                    width: 200,
-                    height: 37,
-                    fontSize: 26,
+                    width: 125,
+                    height: 44,
+                    fontSize: 16,
                     fontWeight: 'bold',
                     color: '#333',
                   }}
@@ -37,9 +37,9 @@ export default function Index() {
               <Menu.Item key="1">
                 <span
                   style={{
-                    width: 200,
-                    height: 37,
-                    fontSize: 26,
+                    width: 125,
+                    height: 44,
+                    fontSize: 16,
                     fontWeight: 500,
                     color: '#333',
                   }}
@@ -54,16 +54,16 @@ export default function Index() {
           <div
             className="mouse"
             style={{
-              width: 54,
-              height: 54,
+              width: 34,
+              height: 34,
               backgroundColor: 'white',
               borderRadius: '50%',
-              marginRight: 69,
+              marginRight: 43,
             }}
           />
         </Dropdown>
 
-        <div style={{ width: 62, height: 54, backgroundColor: 'white' }} />
+        <div style={{ width: 39, height: 34, backgroundColor: 'white' }} />
       </div>
     </div>
   )
