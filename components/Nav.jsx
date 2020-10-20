@@ -1,6 +1,7 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
 import React, { useState } from 'react'
 import { Drawer, Dropdown, Menu } from 'antd'
+import { apx } from '../utils/devices'
 
 export default function Nav() {
   const [visible, setVisible] = useState(false)
@@ -17,24 +18,26 @@ export default function Nav() {
         style={{
           backgroundColor: '#752EA4',
           width: '100%',
-          height: 63,
-          paddingLeft: 60,
-          paddingRight: 90,
+          height: apx(100),
+          paddingLeft: apx(60),
+          paddingRight: apx(89),
         }}
       >
-        <div style={{ width: 80, height: 48, backgroundColor: 'white' }} />
+        <div
+          style={{ width: apx(128), height: apx(76), backgroundColor: 'white' }}
+        />
 
         <div className="row main-between">
           <Dropdown
             overlay={
-              <Menu style={{ top: 20, right: 100 }}>
+              <Menu style={{ top: apx(20), right: apx(100) }}>
                 <Menu.Item key="0">
                   <span
                     style={{
-                      width: 125,
-                      height: 44,
-                      fontSize: 16,
-                      fontWeight: 'bold',
+                      width: apx(200),
+                      height: apx(70),
+                      fontSize: apx(26),
+                      fontWeight: 500,
                       color: '#333',
                     }}
                   >
@@ -45,9 +48,9 @@ export default function Nav() {
                 <Menu.Item key="1">
                   <span
                     style={{
-                      width: 125,
-                      height: 44,
-                      fontSize: 16,
+                      width: apx(200),
+                      height: apx(70),
+                      fontSize: apx(26),
                       fontWeight: 500,
                       color: '#333',
                     }}
@@ -62,36 +65,42 @@ export default function Nav() {
             <div
               className="mouse"
               style={{
-                width: 34,
-                height: 34,
+                width: apx(54),
+                height: apx(54),
                 backgroundColor: 'white',
                 borderRadius: '50%',
-                marginRight: 43,
+                marginRight: apx(69),
               }}
             />
           </Dropdown>
 
           <button
             type="button"
-            style={{ width: 39, height: 34, backgroundColor: 'white' }}
+            style={{
+              width: apx(62),
+              height: apx(54),
+              backgroundColor: 'white',
+            }}
             onClick={showDrawer}
           />
         </div>
       </div>
-      <Drawer
-        placement="right"
-        closable={false}
-        onClose={onClose}
-        visible={visible}
-        maskStyle={{ background: '#fff' }}
-        width={875}
-        style={{ opacity: 0.96 }}
-        bodyStyle={{ background: '#752EA4' }}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
+
+      <div style={{ background: '#fff', opacity: 0.5 }}>
+        <Drawer
+          placement="right"
+          closable={false}
+          onClose={onClose}
+          visible={visible}
+          maskStyle={{ background: 'rgba(255,255,255,0.6)' }}
+          width={apx(1400)}
+          bodyStyle={{ background: '#752EA4' }}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
+      </div>
     </>
   )
 }
