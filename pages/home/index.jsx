@@ -25,7 +25,7 @@ export default class Home extends React.Component {
   renderNavigation = () => (
     <div
       className={'column'}
-      style={{ position: 'fixed', left: 0, top: apx(100) }}
+      style={{ position: 'fixed', left: 0, top: 0, bottom: 0 }}
     >
       {this.refImgs.map((item, index) => (
         <div
