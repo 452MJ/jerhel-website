@@ -1,1 +1,1 @@
-export const apx = px => `${px}rem`
+export const apx = (px = 0) => `${px / 100}rem`

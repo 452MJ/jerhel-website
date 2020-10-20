@@ -12,8 +12,11 @@ export default class MyApp extends Component {
     function fnResize() {
       const designSize = 1920 // 设计图尺寸
       const html = document.documentElement
-      const wW = html.clientWidth // 窗口宽度
-      const rem = wW / designSize
+      let windowWidth = html.clientWidth // 窗口宽度
+      if (windowWidth < 1200) {
+        windowWidth = 1200
+      }
+      const rem = (windowWidth * 100) / designSize
       document.documentElement.style.fontSize = `${rem}px`
     }
   }

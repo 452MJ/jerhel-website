@@ -2,6 +2,7 @@
 import React from 'react'
 import { Layout, Image } from 'antd'
 import Nav from '../../components/Nav'
+import { apx } from '../../utils/devices'
 
 const { Header, Footer, Sider, Content } = Layout
 
@@ -18,23 +19,13 @@ export default class Home extends React.Component {
   render() {
     return (
       <Layout>
-        <Header
-          style={{
-            height: 63,
-            padding: 0,
-            margin: 0,
-            border: 0,
-          }}
-        >
-          <Nav />
-        </Header>
+        <Nav />
+
         <Content>
           <img
             src="/home1.webp"
             alt=""
-            width={'100%'}
-            // height={1000}
-            // style={{ width: '100%' }}
+            style={{ width: apx(1920), height: apx(980) }}
           />
         </Content>
       </Layout>
