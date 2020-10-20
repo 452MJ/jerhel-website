@@ -1,34 +1,89 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
 import React from 'react'
-import { Layout, Image } from 'antd'
 import Nav from '../../components/Nav'
 import { apx } from '../../utils/devices'
 
-const { Header, Footer, Sider, Content } = Layout
-
 export default class Home extends React.Component {
-  state = {
-    collapsed: false,
+  constructor(props) {
+    super(props)
+    this.state = {
+      navigationIndex: 0, //左侧导航栏
+      imgs: [
+        '/home1.webp',
+        '/nav_tab_1.webp',
+        '/nav_tab_2.webp',
+        '/nav_tab_3.webp',
+      ],
+    }
+  }
+  refImgs = [null, null, null, null]
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
   }
 
-  onCollapse = collapsed => {
-    console.log(collapsed)
-    this.setState({ collapsed })
-  }
+  renderNavigation = () => (
+    <div
+      className={'column'}
+      style={{ position: 'fixed', left: 0, top: apx(100) }}
+    >
+      {this.refImgs.map((item, index) => (
+        <div
+          className={'mouse'}
+          style={{
+            width: apx(100),
+            height: apx(100),
+            background: index === this.state.navigationIndex ? 'red' : 'yellow',
+          }}
+          onClick={() =>
+            (document.documentElement.scrollTop = document.body.scrollTop = this.refImgs[
+              index
+            ].offsetTop)
+          }
+        />
+      ))}
+    </div>
+  )
 
   render() {
     return (
-      <Layout>
+      <div className="column">
         <Nav />
 
-        <Content>
+        {this.state.imgs.map((url, index) => (
           <img
-            src="/home1.webp"
+            key={index}
+            ref={ref => {
+              if (ref) {
+                this.refImgs[index] = ref
+              }
+            }}
+            src={url}
             alt=""
-            style={{ width: apx(1920), height: apx(980) }}
+            style={{ width: apx(1920), height: apx(1080) }}
           />
-        </Content>
-      </Layout>
+        ))}
+
+        {this.renderNavigation()}
+      </div>
     )
+  }
+
+  handleScroll = () => {
+    const currentTop = document.documentElement.scrollTop
+
+    let navigationIndex
+
+    this.refImgs.forEach((ref, index) => {
+      if (ref.offsetTop <= currentTop) {
+        navigationIndex = index
+      }
+    })
+
+    if (navigationIndex !== this.state.navigationIndex) {
+      this.setState({ navigationIndex })
+    }
+
+    // console.log(img)
   }
 }
