@@ -8,3 +8,23 @@
   color: #fff;
   background: #681F9A;
 }
+
+.ant-input, .ant-input-focused {
+  /*border:0;*/
+  background: #FAF3FC;
+  border: 1px solid #FAF3FC;
+}
+
+.ant-input:focus, .ant-input-focused {
+  background: #fff;
+  border: 1px solid #681F9A;
+  outline: 0;
+  box-shadow: 0 0 0 3px #FAF3FC;
+}
+
+.ant-input:hover, .ant-input-focused {
+  background: #fff;
+  border: 1px solid #681F9A;
+  outline: 0;
+  box-shadow: 0 0 0 3px #FAF3FC;
+}
