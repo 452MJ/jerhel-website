@@ -1,7 +1,11 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
 import React from 'react'
+import { Controller, Scene } from 'react-scrollmagic'
+import Scroll from 'react-scroll'
 import Nav from '../../components/Nav'
 import { apx } from '../../utils/devices'
+
+const scroll = Scroll.animateScroll
 
 export default class Home extends React.Component {
   refImgs = [null, null, null, null]
@@ -19,27 +23,56 @@ export default class Home extends React.Component {
     }
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
-  }
+  componentDidMount() {}
 
   render = () => (
     <div className="column">
       <Nav />
 
-      {this.state.imgs.map((url, index) => (
-        <img
-          key={index.toString()}
-          ref={ref => {
-            if (ref) {
-              this.refImgs[index] = ref
-            }
-          }}
-          src={url}
-          alt=""
-          style={{ width: apx(1920), height: apx(1080) }}
-        />
-      ))}
+      <Controller>
+        {this.state.imgs.map((url, index) => (
+          <Scene
+            ref={ref => {
+              try {
+                if (ref) {
+                  this.refImgs[index] = ref
+                }
+              } catch (e) {}
+            }}
+            key={index.toString()}
+            triggerHook={0}
+            duration="100%"
+            pin={index !== 0}
+            indicators
+          >
+            {(progress, event) => {
+              if (event.type === 'enter') {
+                if (this.state.navigationIndex !== index) {
+                  this.setState({ navigationIndex: index })
+                }
+              }
+
+              return (
+                <div
+                  className="column"
+                  style={{ width: apx(1920), height: apx(1080) }}
+                >
+                  <img
+                    id={`#img${index}`}
+                    src={url}
+                    alt=""
+                    style={{ width: '100%', height: '100%' }}
+                  />
+                  <div className="absolute column">
+                    <span>page {index}</span>
+                    <span>{progress}</span>
+                  </div>
+                </div>
+              )
+            }}
+          </Scene>
+        ))}
+      </Controller>
 
       {this.renderNavigation()}
     </div>
@@ -59,31 +92,25 @@ export default class Home extends React.Component {
             height: apx(100),
             background: index === this.state.navigationIndex ? 'red' : 'yellow',
           }}
-          onClick={() =>
-            (document.documentElement.scrollTop = document.body.scrollTop = this.refImgs[
-              index
-            ].offsetTop)
-          }
+          onClick={() => {
+            const elementId = `#img${index}`
+            const img = document.getElementById(elementId)
+
+            const offsetTop = {
+              0: img.height * 0,
+              1: img.height * 1,
+              2: img.height * 3,
+              3: img.height * 5,
+            }[String(index)]
+
+            scroll.scrollTo(offsetTop, {
+              duration: 500 * Math.abs(this.state.navigationIndex - index),
+              smooth: true,
+            })
+
+          }}
         />
       ))}
     </div>
   )
-
-  handleScroll = () => {
-    const currentTop = document.documentElement.scrollTop
-
-    let navigationIndex
-
-    this.refImgs.forEach((ref, index) => {
-      if (ref.offsetTop <= currentTop) {
-        navigationIndex = index
-      }
-    })
-
-    if (navigationIndex !== this.state.navigationIndex) {
-      this.setState({ navigationIndex })
-    }
-
-    // console.log(img)
-  }
 }

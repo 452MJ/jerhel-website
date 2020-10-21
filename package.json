@@ -17,7 +17,9 @@
     "next": "latest",
     "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-scroll": "^1.8.1",
+    "react-scrollmagic": "^2.2.0"
   },
   "browser": {
     "fs": false,
@@ -25,8 +27,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.6.0",
     "babel-eslint": "10.1.0",
+    "eslint": "^7.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-babel": "^5.1.0",

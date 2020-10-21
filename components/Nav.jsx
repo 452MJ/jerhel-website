@@ -163,6 +163,7 @@ export default class Nav extends React.Component {
           style={{
             position: 'fixed',
             top: 0,
+            zIndex: 999,
             backgroundColor: 'rgba(117,46,164,0.75)',
             width: '100%',
             height: apx(100),
