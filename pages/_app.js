@@ -1,7 +1,7 @@
 import 'antd/dist/antd.css'
 import '../styles/vars.css'
 import '../styles/global.css'
-import { Component } from 'react'
+import React, { Component } from 'react'
 
 export default class MyApp extends Component {
   componentDidMount() {
@@ -22,6 +22,7 @@ export default class MyApp extends Component {
   }
 
   render() {
+    // eslint-disable-next-line no-shadow
     const { Component, pageProps } = this.props
     return <Component {...pageProps} />
   }

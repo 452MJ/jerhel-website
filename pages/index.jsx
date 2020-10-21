@@ -1,9 +1,7 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
-import Home from "./home";
-import React from "react";
+import React from 'react'
+import Home from './home'
 
 export default function Index() {
-  return (
-      <Home/>
-  )
+  return <Home />
 }

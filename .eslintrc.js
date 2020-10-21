@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  // parser: 'babel-eslint',
+  parser: 'babel-eslint',
   env: {
     browser: true,
     node: true,
@@ -19,7 +19,10 @@ module.exports = {
     'react/no-access-state-in-setstate': 'off',
     'arrow-parens': 'off',
     'no-unused-vars': 'off',
-    //    "sort-imports": "error",
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'no-multi-assign': 'off',
+    'no-return-assign': 'off',
+    'jsx-a11y/no-static-element-interactions':'off',
     'no-param-reassign': 'off',
     'global-require': 'off',
     'import/prefer-default-export': 'off',

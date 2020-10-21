@@ -131,6 +131,7 @@ export default class Nav extends React.Component {
                 style={{ marginRight: apx(50), marginBottom: apx(108) }}
               >
                 <img
+                  alt=""
                   style={{
                     width: apx(198),
                     height: apx(296),
