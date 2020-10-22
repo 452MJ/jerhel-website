@@ -1,30 +1,43 @@
 :root {
-  --backgroundColor: #f7f7f7;
-  --primaryColor: #191a1b;
-  --textColorSecondary: rgba(0, 0, 0, 0.45);
+    --backgroundColor: #f7f7f7;
+    --primaryColor: #191a1b;
+    --textColorSecondary: rgba(0, 0, 0, 0.45);
 }
 
 .ant-dropdown-menu-dark .ant-dropdown-menu-item-selected, .ant-dropdown-menu-dark .ant-dropdown-menu-item-selected:hover, .ant-dropdown-menu-dark .ant-dropdown-menu-item-selected > a {
-  color: #fff;
-  background: #681F9A;
+    color: #fff;
+    background: #681F9A;
 }
 
 .ant-input, .ant-input-focused {
-  /*border:0;*/
-  background: #FAF3FC;
-  border: 1px solid #FAF3FC;
+    /*border:0;*/
+    background: #FAF3FC;
+    border: 1px solid #FAF3FC;
 }
 
 .ant-input:focus, .ant-input-focused {
-  background: #fff;
-  border: 1px solid #681F9A;
-  outline: 0;
-  box-shadow: 0 0 0 3px #FAF3FC;
+    background: #fff;
+    border: 1px solid #681F9A;
+    outline: 0;
+    box-shadow: 0 0 0 3px #FAF3FC;
 }
 
 .ant-input:hover, .ant-input-focused {
-  background: #fff;
-  border: 1px solid #681F9A;
-  outline: 0;
-  box-shadow: 0 0 0 3px #FAF3FC;
+    background: #fff;
+    border: 1px solid #681F9A;
+    outline: 0;
+    box-shadow: 0 0 0 3px #FAF3FC;
+}
+
+
+.ant-input::placeholder {
+    color: #B899C2;
+}
+
+.ant-input:hover::placeholder {
+    color: #333;
+}
+
+.ant-input:focus::placeholder {
+    color: #333;
 }

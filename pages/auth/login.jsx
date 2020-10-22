@@ -9,7 +9,11 @@ export default function Index() {
       className="row"
       style={{ overflow: 'hidden', width: apx(1920), height: '100vh' }}
     >
-      <img src="/auth_bg.png" style={{ width: apx(730), height: apx(1080) }} />
+      <img
+        src="/auth_bg.png"
+        alt=""
+        style={{ width: apx(730), height: apx(1080) }}
+      />
       <div className="column" style={{ flex: 1, alignSelf: 'stretch' }}>
         <span
           style={{
@@ -39,7 +43,8 @@ export default function Index() {
 
           <Input
             style={{
-              margin: apx(5),
+              marginTop: apx(100),
+              marginBottom: apx(20),
               width: apx(460),
               height: apx(60),
               borderRadius: apx(43),
@@ -49,7 +54,8 @@ export default function Index() {
           />
           <Input
             style={{
-              margin: apx(5),
+              marginBottom: apx(60),
+
               width: apx(460),
               height: apx(60),
               borderRadius: apx(43),
@@ -57,6 +63,20 @@ export default function Index() {
             }}
             placeholder="Password"
           />
+
+          <div className="button-primary">Get Started</div>
+
+          <div
+            className="button-primary"
+            style={{
+              background: '#fff',
+              color: '#681f9a',
+              fontWeight: '400',
+              marginTop: apx(10),
+            }}
+          >
+            Forgot password?
+          </div>
         </div>
       </div>
     </div>
