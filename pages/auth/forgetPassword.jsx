@@ -25,11 +25,10 @@ export default function Index() {
             color: '#333',
           }}
         >
-          {'Not a member? '}
-
-          <Link href="/auth/signUp">
+          {'Already a member? '}
+          <Link href="/auth/login">
             <a className="mouse" style={{ color: '#681F9A' }}>
-              Sign up Now
+              Sign in
             </a>
           </Link>
         </span>
@@ -40,15 +39,52 @@ export default function Index() {
               fontWeight: 'bold',
               fontSize: apx(36),
               color: '#232323',
+              marginBottom: apx(30),
             }}
           >
-            Log in to Jerhel
+            Forgot Password?
+          </span>
+
+          <span
+            style={{
+              width: apx(460),
+              fontSize: apx(16),
+              color: '#8c8c8c',
+              marginBottom: apx(30),
+              textAlign: 'center',
+            }}
+          >
+            Enter the email address you used when you joined and we’ll send you
+            instructions to reset your password.
+          </span>
+
+          <span
+            style={{
+              width: apx(460),
+              textAlign: 'center',
+              fontSize: apx(16),
+              color: '#8c8c8c',
+              marginBottom: apx(60),
+            }}
+          >
+            For security reasons, we do NOT store your password. So rest assured
+            that we will never send your password via email.
+          </span>
+
+          <span
+            style={{
+              fontWeight: 'bold',
+              fontSize: apx(20),
+              color: '#232323',
+              marginBottom: apx(20),
+            }}
+          >
+            Email Address
           </span>
 
           <Input
             style={{
-              marginTop: apx(100),
-              marginBottom: apx(20),
+              marginBottom: apx(30),
               width: apx(460),
               height: apx(60),
               borderRadius: apx(43),
@@ -56,37 +92,8 @@ export default function Index() {
             }}
             placeholder="Email"
           />
-          <Input
-            style={{
-              marginBottom: apx(60),
 
-              width: apx(460),
-              height: apx(60),
-              borderRadius: apx(43),
-              padding: `0 .26rem`,
-            }}
-            placeholder="Password"
-          />
-
-          <Link href="/">
-            <a>
-              <div className="button-primary">Get Started</div>
-            </a>
-          </Link>
-
-          <Link href="/auth/forgetPassword">
-            <a
-              className="button-primary"
-              style={{
-                background: '#fff',
-                color: '#681f9a',
-                fontWeight: '400',
-                marginTop: apx(10),
-              }}
-            >
-              Forgot password?
-            </a>
-          </Link>
+          <div className="button-primary">Send Reset lnstructions</div>
         </div>
       </div>
     </div>

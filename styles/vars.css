@@ -10,6 +10,7 @@
 }
 
 .ant-input, .ant-input-focused {
+    font-size: .16rem;
     /*border:0;*/
     background: #FAF3FC;
     border: 1px solid #FAF3FC;
