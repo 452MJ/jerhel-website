@@ -3,6 +3,7 @@ import React from 'react'
 import { Drawer, Dropdown, Menu } from 'antd'
 import { CloseOutlined, DownOutlined } from '@ant-design/icons'
 
+import Link from 'next/link'
 import { apx } from '../utils/devices'
 
 export default class Nav extends React.Component {
@@ -171,13 +172,15 @@ export default class Nav extends React.Component {
             paddingRight: apx(89),
           }}
         >
-          <div
-            style={{
-              width: apx(128),
-              height: apx(76),
-              backgroundColor: 'white',
-            }}
-          />
+          <Link href="/auth/login">
+            <div
+              style={{
+                width: apx(128),
+                height: apx(76),
+                backgroundColor: 'white',
+              }}
+            />
+          </Link>
 
           <div className="row main-between">
             <Dropdown
