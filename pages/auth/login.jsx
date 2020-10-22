@@ -69,9 +69,7 @@ export default function Index() {
           />
 
           <Link href="/">
-            <a>
-              <div className="button-primary">Get Started</div>
-            </a>
+            <a className="button-primary">Get Started</a>
           </Link>
 
           <Link href="/auth/forgetPassword">
