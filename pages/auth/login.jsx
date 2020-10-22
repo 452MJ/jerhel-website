@@ -3,6 +3,7 @@ import React from 'react'
 import { Input } from 'antd'
 import Link from 'next/link'
 import { apx } from '../../utils/devices'
+import { $router, Pages } from '../../utils/router'
 
 export default function Index() {
   return (
@@ -27,11 +28,13 @@ export default function Index() {
         >
           {'Not a member? '}
 
-          <Link href="/auth/signUp">
-            <a className="mouse" style={{ color: '#681F9A' }}>
-              Sign up Now
-            </a>
-          </Link>
+          <span
+            className="mouse"
+            style={{ color: '#681F9A' }}
+            onClick={() => $router.push(Pages.SignUp)}
+          >
+            Sign up Now
+          </span>
         </span>
 
         <div className="column">
@@ -68,23 +71,29 @@ export default function Index() {
             placeholder="Password"
           />
 
-          <Link href="/">
-            <a className="button-primary">Get Started</a>
-          </Link>
+          <div
+            className="button-primary"
+            onClick={() => {
+              $router.push(Pages.Home)
+            }}
+          >
+            Get Started
+          </div>
 
-          <Link href="/auth/forgetPassword">
-            <a
-              className="button-primary"
-              style={{
-                background: '#fff',
-                color: '#681f9a',
-                fontWeight: '400',
-                marginTop: apx(10),
-              }}
-            >
-              Forgot password?
-            </a>
-          </Link>
+          <a
+            className="button-primary"
+            onClick={() => {
+              $router.push(Pages.ForgetPassword)
+            }}
+            style={{
+              background: '#fff',
+              color: '#681f9a',
+              fontWeight: '400',
+              marginTop: apx(10),
+            }}
+          >
+            Forgot password?
+          </a>
         </div>
       </div>
     </div>

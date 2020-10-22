@@ -1,8 +1,8 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
 import React from 'react'
 import { Checkbox, Input } from 'antd'
-import Link from 'next/link'
 import { apx } from '../../utils/devices'
+import { $router, Pages } from '../../utils/router'
 
 export default function Index() {
   return (
@@ -26,11 +26,13 @@ export default function Index() {
           }}
         >
           {'Already a member? '}
-          <Link href="/auth/login">
-            <a className="mouse" style={{ color: '#681F9A' }}>
-              Sign in
-            </a>
-          </Link>
+          <span
+            className="mouse"
+            style={{ color: '#681F9A' }}
+            onClick={() => $router.replace(Pages.Login)}
+          >
+            Sign in
+          </span>
         </span>
 
         <div className="column">
@@ -120,7 +122,12 @@ export default function Index() {
             </span>
           </div>
 
-          <div className="button-primary">Create Account</div>
+          <div
+            className="button-primary"
+            onClick={() => $router.replace(Pages.Login)}
+          >
+            Create Account
+          </div>
         </div>
       </div>
     </div>
