@@ -28,9 +28,9 @@ export default function Index() {
           {'Not a member? '}
 
           <Link href="/auth/signUp">
-            <span className="mouse" style={{ color: '#681F9A' }}>
+            <a className="mouse" style={{ color: '#681F9A' }}>
               Sign up Now
-            </span>
+            </a>
           </Link>
         </span>
 
@@ -70,17 +70,19 @@ export default function Index() {
 
           <div className="button-primary">Get Started</div>
 
-          <div
-            className="button-primary"
-            style={{
-              background: '#fff',
-              color: '#681f9a',
-              fontWeight: '400',
-              marginTop: apx(10),
-            }}
-          >
-            Forgot password?
-          </div>
+          <Link href="/auth/forgetPassword">
+            <a
+              className="button-primary"
+              style={{
+                background: '#fff',
+                color: '#681f9a',
+                fontWeight: '400',
+                marginTop: apx(10),
+              }}
+            >
+              Forgot password?
+            </a>
+          </Link>
         </div>
       </div>
     </div>
