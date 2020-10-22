@@ -1,7 +1,6 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
 import React from 'react'
 import { Input } from 'antd'
-import Link from 'next/link'
 import { apx } from '../../utils/devices'
 
 export default function Index() {
@@ -11,7 +10,7 @@ export default function Index() {
       style={{ overflow: 'hidden', width: apx(1920), height: '100vh' }}
     >
       <img
-        src="/static/bg_login.png"
+        src="/static/bg_signup.png"
         alt=""
         style={{ width: apx(730), height: apx(1080) }}
       />
@@ -26,12 +25,9 @@ export default function Index() {
           }}
         >
           {'Not a member? '}
-
-          <Link href="/auth/signUp">
-            <span className="mouse" style={{ color: '#681F9A' }}>
-              Sign up Now
-            </span>
-          </Link>
+          <span className="mouse" style={{ color: '#681F9A' }}>
+            Sign up Now
+          </span>
         </span>
 
         <div className="column">
