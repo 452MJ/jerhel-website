@@ -8,8 +8,6 @@ import { apx } from '../../utils/devices'
 const scroll = Scroll.animateScroll
 
 export default class Home extends React.Component {
-  refImgs = [null, null, null, null]
-
   constructor(props) {
     super(props)
     this.state = {
@@ -32,13 +30,6 @@ export default class Home extends React.Component {
       <Controller>
         {this.state.imgs.map((url, index) => (
           <Scene
-            ref={ref => {
-              try {
-                if (ref) {
-                  this.refImgs[index] = ref
-                }
-              } catch (e) {}
-            }}
             key={index.toString()}
             triggerHook={0}
             duration="100%"
@@ -72,6 +63,16 @@ export default class Home extends React.Component {
             }}
           </Scene>
         ))}
+
+        <Scene triggerHook={0} duration="100%" pin={false} indicators>
+          <div
+            style={{
+              width: apx(1920),
+              height: apx(1080),
+              background: 'red',
+            }}
+          />
+        </Scene>
       </Controller>
 
       {this.renderNavigation()}
@@ -83,7 +84,7 @@ export default class Home extends React.Component {
       className="column"
       style={{ position: 'fixed', left: 0, top: 0, bottom: 0 }}
     >
-      {this.refImgs.map((item, index) => (
+      {[0, 0, 0, 0].map((item, index) => (
         <div
           key={index.toString()}
           className="mouse"
