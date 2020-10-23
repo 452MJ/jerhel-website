@@ -3,8 +3,8 @@ import React from 'react'
 import { Controller, Scene } from 'react-scrollmagic'
 import Scroll from 'react-scroll'
 import { Input } from 'antd'
-import Nav from '../../components/Nav'
-import { apx } from '../../utils/devices'
+import Nav from '@/components/Nav'
+import { apx } from '@/utils/devices'
 
 const scroll = Scroll.animateScroll
 
@@ -14,10 +14,10 @@ export default class Home extends React.Component {
     this.state = {
       navigationIndex: 0, // 左侧导航栏
       imgs: [
-        '/static/home1.webp',
-        '/static/nav_tab_1.webp',
-        '/static/nav_tab_2.webp',
-        '/static/nav_tab_3.webp',
+        'static/home1.webp',
+        'static/nav_tab_1.webp',
+        'static/nav_tab_2.webp',
+        'static/nav_tab_3.webp',
       ],
     }
   }

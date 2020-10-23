@@ -9,6 +9,15 @@
         "style": "index.css"
       }
     ],
+
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@": "./"
+        }
+      }
+    ],
     [
       "import",
       {
