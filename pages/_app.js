@@ -2,9 +2,12 @@ import 'antd/dist/antd.css'
 import '../styles/vars.css'
 import '../styles/global.css'
 import React, { Component } from 'react'
+import httpUtil from '../utils/httpUtils'
 
 export default class MyApp extends Component {
   componentDidMount() {
+    window.$http = httpUtil
+
     fnResize()
     window.onresize = function () {
       fnResize()

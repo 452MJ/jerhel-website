@@ -12,6 +12,8 @@ module.exports = {
     global: true,
     $styles: true,
     $colors: true,
+    $http: true,
+    apx: true,
   },
   rules: {
     'react-native/no-inline-styles': 'off',

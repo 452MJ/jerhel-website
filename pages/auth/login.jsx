@@ -6,6 +6,13 @@ import { apx } from '../../utils/devices'
 import { $router, Pages } from '../../utils/router'
 
 export default function Index() {
+  const onLoginClick = async () => {
+    const res = await $http.post($http.api.login, {
+      username: 'test',
+      password: '123',
+    })
+  }
+
   return (
     <div
       className="row"
@@ -71,12 +78,7 @@ export default function Index() {
             placeholder="Password"
           />
 
-          <div
-            className="button-primary"
-            onClick={() => {
-              $router.push(Pages.Home)
-            }}
-          >
+          <div className="button-primary" onClick={onLoginClick}>
             Get Started
           </div>
 
