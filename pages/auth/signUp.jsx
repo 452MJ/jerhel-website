@@ -1,10 +1,29 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
-import React from 'react'
+import React, { useState } from 'react'
 import { Checkbox, Input } from 'antd'
 import { apx } from '../../utils/devices'
 import { $router, Pages } from '../../utils/router'
+import apis from '../../apis'
 
 export default function Index() {
+  const [params, setParams] = useState({
+    firstName: 'test',
+    lastName: 'test',
+    email: 'test@qq.com',
+    password: '123456',
+  })
+
+  const onSignUp = async () => {
+    const res = await apis.user.signUp(params)
+    if (res.result) {
+      $router.replace(Pages.Login)
+    } else {
+      alert(res.msg)
+    }
+  }
+
+  const { firstName, lastName, email, password } = params
+
   return (
     <div
       className="row"
@@ -62,6 +81,13 @@ export default function Index() {
                 padding: `0 .26rem`,
               }}
               placeholder="Name"
+              value={firstName}
+              onChange={({ target: { value } }) => {
+                setParams({
+                  ...params,
+                  firstName: value,
+                })
+              }}
             />
             <Input
               style={{
@@ -71,6 +97,13 @@ export default function Index() {
                 padding: `0 .26rem`,
               }}
               placeholder="Username"
+              value={lastName}
+              onChange={({ target: { value } }) => {
+                setParams({
+                  ...params,
+                  lastName: value,
+                })
+              }}
             />
           </div>
 
@@ -84,6 +117,13 @@ export default function Index() {
               padding: `0 .26rem`,
             }}
             placeholder="Email"
+            value={email}
+            onChange={({ target: { value } }) => {
+              setParams({
+                ...params,
+                email: value,
+              })
+            }}
           />
 
           <Input
@@ -95,6 +135,13 @@ export default function Index() {
               padding: `0 .26rem`,
             }}
             placeholder="Password"
+            value={password}
+            onChange={({ target: { value } }) => {
+              setParams({
+                ...params,
+                password: value,
+              })
+            }}
           />
 
           <div
@@ -122,10 +169,7 @@ export default function Index() {
             </span>
           </div>
 
-          <div
-            className="button-primary"
-            onClick={() => $router.replace(Pages.Login)}
-          >
+          <div className="button-primary" onClick={onSignUp}>
             Create Account
           </div>
         </div>

@@ -32,6 +32,7 @@ const instanceObj = {
 
 const api = {
   login: '/login',
+  signUp: '/signUp',
 }
 
 const httpUtil = {
