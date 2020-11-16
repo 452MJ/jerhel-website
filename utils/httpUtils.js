@@ -1,45 +1,38 @@
 import axios from 'axios'
-import Qs from 'qs'
 
 const baseURL = 'http://127.0.0.1:7001'
 const timeout = 30 * 1000
 const instance = axios.create({
   baseURL,
   timeout,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 })
-
-const instanceForm = axios.create({
-  baseURL,
-  timeout,
-  transformRequest: [
-    function (data) {
-      data = Qs.stringify(data)
-      return data
-    },
-  ],
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  },
-})
-
-const instanceObj = {
-  instance,
-  instanceForm,
-}
 
 const api = {
   login: '/login',
   signUp: '/signUp',
+
+  userInfo: '/user/info',
 }
+
+instance.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers.Authorization = `Bearer ${token}`
+    }
+    return config
+  },
+  error => Promise.reject(error)
+)
 
 const httpUtil = {
   api,
   get: (url, params) =>
-    new Promise((resolve, reject) => {
-      instanceObj.instance
+    new Promise(async (resolve, reject) => {
+      //    Authorization: `Bearer ${token}`,
+
+      instance
         .get(url, {
           params,
         })
@@ -50,33 +43,9 @@ const httpUtil = {
           reject(error)
         })
     }),
-  post: (url, params, option) =>
-    new Promise((resolve, reject) => {
-      instanceObj.instance
-        .post(url, params, option)
-        .then(response => {
-          resolve(response.data)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    }),
-  getForm: (url, params) =>
-    new Promise((resolve, reject) => {
-      instanceObj.instanceForm
-        .get(url, {
-          params,
-        })
-        .then(response => {
-          resolve(response.data)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    }),
-  postForm: (url, params) =>
-    new Promise((resolve, reject) => {
-      instanceObj.instanceForm
+  post: (url, params) =>
+    new Promise(async (resolve, reject) => {
+      instance
         .post(url, params)
         .then(response => {
           resolve(response.data)

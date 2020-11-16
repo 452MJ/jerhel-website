@@ -1,20 +1,22 @@
 // Custom DatePicker that uses Day.js instead of Moment.js
 import React, { useState } from 'react'
 import { Input } from 'antd'
-import Link from 'next/link'
 import { apx } from '../../utils/devices'
 import { $router, Pages } from '../../utils/router'
 import apis from '../../apis'
 
 export default function Index() {
   const [params, setParams] = useState({
-    email: '',
-    password: '',
+    email: 'test@qq.com',
+    password: '123456',
   })
 
   const onLoginClick = async () => {
     const res = await apis.user.login(params)
     if (res) {
+      localStorage.setItem('token', res.token)
+      const userInfo = await apis.user.userInfo()
+      localStorage.setItem('userInfo', JSON.stringify(userInfo))
       $router.replace(Pages.Home)
     }
   }

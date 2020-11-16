@@ -4,12 +4,18 @@ export default {
       email,
       password,
     })
-    return res.result
+    return res.data
   },
 
   async signUp(params) {
     const res = await $http.post($http.api.signUp, params)
 
     return res
+  },
+
+  async userInfo() {
+    const res = await $http.get($http.api.userInfo)
+
+    return res.data
   },
 }
