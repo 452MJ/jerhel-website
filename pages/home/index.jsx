@@ -5,6 +5,7 @@ import Scroll from 'react-scroll'
 import { Input } from 'antd'
 import Nav from '@/components/Nav'
 import { apx } from '@/utils/devices'
+import apis from '../../apis'
 
 const scroll = Scroll.animateScroll
 
@@ -19,6 +20,12 @@ export default class Home extends React.Component {
         'static/nav_tab_2.webp',
         'static/nav_tab_3.webp',
       ],
+      params: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        content: '',
+      },
     }
   }
 
@@ -90,12 +97,13 @@ export default class Home extends React.Component {
                   className="column"
                   style={{
                     width: apx(1077),
-                    height: apx(820),
                     background: '#fff',
                     borderRadius: apx(20),
+                    paddingTop: apx(90),
+                    paddingBottom: apx(46),
                   }}
                 >
-                  <div className="column">
+                  <div className="column" style={{}}>
                     <div className="column main-end">
                       <div
                         style={{
@@ -158,16 +166,71 @@ export default class Home extends React.Component {
                     className="ant-input"
                     style={{
                       background: '#fff',
-                      borderBottom: `1px solid red`,
                       marginTop: apx(100),
                       marginBottom: apx(20),
                       width: apx(460),
                       height: apx(60),
-                      borderRadius: apx(43),
+                      padding: `0 .26rem`,
+                    }}
+                    placeholder="First name"
+                    value={this.state.params.firstName}
+                    onChange={({ target: { value } }) => {
+                      this.state.params.firstName = value
+                      this.setState({})
+                    }}
+                  />
+                  <Input
+                    className="ant-input"
+                    style={{
+                      background: '#fff',
+                      marginBottom: apx(20),
+                      width: apx(460),
+                      height: apx(60),
+                      padding: `0 .26rem`,
+                    }}
+                    placeholder="Last name"
+                    value={this.state.params.lastName}
+                    onChange={({ target: { value } }) => {
+                      this.state.params.lastName = value
+                      this.setState({})
+                    }}
+                  />
+                  <Input
+                    className="ant-input"
+                    style={{
+                      background: '#fff',
+                      marginBottom: apx(20),
+                      width: apx(460),
+                      height: apx(60),
                       padding: `0 .26rem`,
                     }}
                     placeholder="Email"
+                    value={this.state.params.email}
+                    onChange={({ target: { value } }) => {
+                      this.state.params.email = value
+                      this.setState({})
+                    }}
                   />
+                  <Input.TextArea
+                    className="ant-input"
+                    style={{
+                      background: '#fff',
+                      marginBottom: apx(79),
+                      width: apx(460),
+                      height: apx(200),
+                      padding: `.15rem .26rem`,
+                    }}
+                    placeholder="Content"
+                    value={this.state.params.content}
+                    onChange={({ target: { value } }) => {
+                      this.state.params.content = value
+                      this.setState({})
+                    }}
+                  />
+
+                  <div className="button-primary" onClick={this.onContactClick}>
+                    Contact
+                  </div>
                 </div>
               </div>
             )
@@ -189,17 +252,15 @@ export default class Home extends React.Component {
         .ant-input:focus,
         .ant-input-focused {
           background: #fff;
-          border: 1px solid #681f9a;
+          border-bottom: 1px solid #681f9a;
           outline: 0;
-          box-shadow: 0 0 0 3px #faf3fc;
         }
 
         .ant-input:hover,
         .ant-input-focused {
           background: #fff;
-          border: 1px solid #681f9a;
+          border-bottom: 1px solid #681f9a;
           outline: 0;
-          box-shadow: 0 0 0 3px #faf3fc;
         }
 
         .ant-input::placeholder {
@@ -252,4 +313,10 @@ export default class Home extends React.Component {
       ))}
     </div>
   )
+
+  onContactClick = async () => {
+    const res = await apis.contact.add(this.state.params)
+    if (res) {
+    }
+  }
 }

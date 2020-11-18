@@ -12,6 +12,7 @@ const api = {
   signUp: '/signUp',
 
   userInfo: '/user/info',
+  addContact: '/contact/add',
 }
 
 instance.interceptors.request.use(
